@@ -1,4 +1,10 @@
-# Instructions
+# Presentation Template
+
+Edit `index.html` to customize the presentation.  The presentation template
+demonstrates basic concepts.  Much more can be found within the reveal.js
+[documentation](https://revealjs.com/).
+
+# Build and Package
 
 After installing dependencies, either serve the presentation locally via the
 built-in http server or build the presentation into a static website that
@@ -36,3 +42,7 @@ any plugins into the `dist` directory before running tests.  This script should
 not be used as it does not actualy result in the production of a usable
 production archive.  Further, tests do not execute properly on various platforms
 including WSL2.
+
+# References
+
+1. [reveal.js documentation](https://revealjs.com/)
