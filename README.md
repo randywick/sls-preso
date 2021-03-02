@@ -1,28 +1,38 @@
-<p align="center">
-  <a href="https://revealjs.com">
-  <img src="https://hakim-static.s3.amazonaws.com/reveal-js/logo/v1/reveal-black-text.svg" alt="reveal.js" width="450">
-  </a>
-  <br><br>
-  <a href="https://github.com/hakimel/reveal.js/actions"><img src="https://github.com/hakimel/reveal.js/workflows/tests/badge.svg"></a>
-  <a href="https://slides.com/"><img src="https://s3.amazonaws.com/static.slid.es/images/slides-github-banner-320x40.png?1" alt="Slides" width="160" height="20"></a>
-</p>
+# Instructions
 
-reveal.js is an open source HTML presentation framework. It enables anyone with a web browser to create fully featured and beautiful presentations for free. [Check out the live demo](https://revealjs.com/).
+After installing dependencies, either serve the presentation locally via the
+built-in http server or build the presentation into a static website that
+can be opened without running a server.
 
-The framework comes with a broad range of features including [nested slides](https://revealjs.com/vertical-slides/), [Markdown support](https://revealjs.com/markdown/), [Auto-Animate](https://revealjs.com/auto-animate/), [PDF export](https://revealjs.com/pdf-export/), [speaker notes](https://revealjs.com/speaker-view/), [LaTeX support](https://revealjs.com/math/), [syntax highlighted code](https://revealjs.com/code/) and much more.
+## Install dependencies
 
-<h1>
-  <a href="https://revealjs.com/installation" style="font-size: 3em;">Get Started</a>
-</h1>
+```bash
+npm install
+```
 
-## Documentation
-The full reveal.js documentation is available at [revealjs.com](https://revealjs.com).
+## Serve locally
 
-## Online Editor
-Want to create your presentation using a visual editor? Try the official reveal.js presentation platform for free at [Slides.com](https://slides.com). It's made by the same people behind reveal.js.
+```bash
+npm start
+```
 
-## License
+This starts a webserver listening at http://0.0.0.0:8000.
 
-MIT licensed
+## Build distribution
 
-Copyright (C) 2011-2020 Hakim El Hattab, https://hakim.se
+```bash
+npx gulp package
+```
+
+This creates a file in the project base directory named `presentation.zip`.
+This archive contains the presentation static assets within a base directory
+named `presentation`.  To view the presentation, simply unzip the archive and
+open `presentation/index.html` in a web browser.
+
+### Note regarding the included build script
+
+`package.json` contains a `build` script that consolidates JavaScript, CSS, and
+any plugins into the `dist` directory before running tests.  This script should
+not be used as it does not actualy result in the production of a usable
+production archive.  Further, tests do not execute properly on various platforms
+including WSL2.
