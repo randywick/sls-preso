@@ -1,8 +1,8 @@
 # Presentation Template
 
 Edit `index.html` to customize the presentation.  The presentation template
-demonstrates basic concepts.  Much more can be found within the reveal.js
-[documentation](https://revealjs.com/).
+demonstrates basic concepts.  Much more can be found in the `examples` directory
+and the reveal.js [documentation](https://revealjs.com/).
 
 # Build and Package
 
