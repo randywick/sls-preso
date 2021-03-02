@@ -12,7 +12,7 @@ const commonjs = require('@rollup/plugin-commonjs')
 const resolve = require('@rollup/plugin-node-resolve').default
 
 const gulp = require('gulp')
-const tap = require('gulp-tap')
+const rename = require('gulp-rename')
 const zip = require('gulp-zip')
 const sass = require('gulp-sass')
 const header = require('gulp-header')
@@ -245,18 +245,23 @@ gulp.task('default', gulp.series(gulp.parallel('js', 'css', 'plugins'), 'test'))
 
 gulp.task('build', gulp.parallel('js', 'css', 'plugins'))
 
-gulp.task('package', gulp.series('default', () =>
-
-    gulp.src([
-        './index.html',
-        './dist/**',
-        './lib/**',
-        './images/**',
-        './plugin/**',
-        './**.md'
-    ]).pipe(zip('reveal-js-presentation.zip')).pipe(gulp.dest('./'))
-
-))
+gulp.task(
+    'package',
+    gulp.series('build', () =>
+        gulp.src([
+            'index.html',
+            '*dist/**',
+            '*media/**',
+            '*plugin/**',
+            '*markdown/**'
+        ])
+        .pipe(rename(file => {
+            file.dirname = `presentation${path.sep}${file.dirname}`
+        }))
+        .pipe(zip('presentation.zip'))
+        .pipe(gulp.dest('./'))
+    )
+)
 
 gulp.task('reload', () => gulp.src(['*.html', '*.md'])
     .pipe(connect.reload()));
